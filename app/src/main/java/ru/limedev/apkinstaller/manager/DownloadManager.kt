@@ -1,11 +1,13 @@
 package ru.limedev.apkinstaller.manager
 
+import android.content.Context
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.limedev.apkinstaller.fromInputStream
+import ru.limedev.apkinstaller.utils.fromInputStream
+import ru.limedev.apkinstaller.utils.putDownloadedApkToDocs
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
@@ -13,6 +15,17 @@ import java.net.URL
 class DownloadManager {
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
+    fun getFileFromUrl(context: Context?, link: String, onStart: () -> Unit, onEnd: (File?) -> Unit) {
+        val file = putDownloadedApkToDocs(context) ?: return
+        onStart.invoke()
+        getFileFromUrl(file, URL(link)) { downloadResult ->
+            when {
+                downloadResult.isSuccess -> onEnd.invoke(file)
+                downloadResult.isError -> onEnd(null)
+            }
+        }
+    }
 
     fun getFileFromUrl(file: File, url: URL, onResult: (DownloadResult) -> Unit) {
         scope.launch {
