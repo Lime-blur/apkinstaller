@@ -8,7 +8,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import ru.limedev.apkinstaller.databinding.ActivityMainBinding
-import ru.limedev.apkinstaller.manager.DownloadManager
+import ru.limedev.apkinstaller.download.DownloadManager
+import ru.limedev.apkinstaller.installer.ApkInstaller
 import ru.limedev.apkinstaller.utils.getApkUriFromDocs
 import ru.limedev.apkinstaller.utils.initStorageDocs
 import ru.limedev.apkinstaller.utils.startAppUpdatingByIntent
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val downloadManager = DownloadManager()
+    private val apkInstaller = ApkInstaller()
 
     private var apkFileResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
             apkFileResultLauncher.launch(intent)
         }
         binding.button3.setOnClickListener { startUpdatingByIntentFromGitHub() }
+        binding.button4.setOnClickListener { startUpdatingByPackageInstallerFromStorage() }
     }
 
     private fun startUpdatingByIntentFromStorage() {
@@ -64,5 +67,10 @@ class MainActivity : AppCompatActivity() {
                 binding.progressBar.isVisible = false
             }
         )
+    }
+
+    private fun startUpdatingByPackageInstallerFromStorage() {
+        val uri = getApkUriFromDocs(this)
+        apkInstaller.install(this, uri)
     }
 }
