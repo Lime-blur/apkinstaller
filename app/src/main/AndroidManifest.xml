@@ -35,7 +35,7 @@
                 android:resource="@xml/provider_paths" />
         </provider>
         <receiver
-            android:name=".ui.ApkInstallerStatusReceiver"
+            android:name=".receiver.ApkInstallerStatusReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />

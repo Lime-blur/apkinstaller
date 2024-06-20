@@ -1,4 +1,4 @@
-package ru.limedev.apkinstaller.ui
+package ru.limedev.apkinstaller.receiver
 
 import android.content.BroadcastReceiver
 import android.content.Context

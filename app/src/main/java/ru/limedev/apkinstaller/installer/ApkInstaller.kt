@@ -7,7 +7,7 @@ import android.content.pm.PackageInstaller
 import android.net.Uri
 import android.os.Build
 import android.util.Log
-import ru.limedev.apkinstaller.ui.ApkInstallerStatusReceiver
+import ru.limedev.apkinstaller.receiver.ApkInstallerStatusReceiver
 
 class ApkInstaller {
 
