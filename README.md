@@ -1,6 +1,4 @@
 # apkinstaller
-[![Решение проблем](https://img.shields.io/badge/Решение%20проблем-welcome-brightgreen.svg?style=flat)](https://github.com/Lime-blur/apkinstaller/issues)
-
 Приложение для установки apk файлов на Android устройство.
 
 ### Цель приложения
@@ -16,6 +14,7 @@
    - Из внутреннего хранилища приложения
 
 ### Проблемы с PackageInstaller и анализ
+[![Решение проблем](https://img.shields.io/badge/Решение%20проблем-welcome-brightgreen.svg?style=flat)](https://github.com/Lime-blur/apkinstaller/issues)
 - Для запуска диалога завершения установки необходимо пройти полный путь установки
   - **Описание проблемы:** параметр "exported" имеет значение "false" во всех Activities, кроме InstallStart, UninstallerActivity в [AndroidManifest.xml](https://android.googlesource.com/platform/packages/apps/PackageInstaller/+/ab39f6cb7afc48584da3c59d8e2a5e1ef121aafb/AndroidManifest.xml)
   - **Решение проблемы:** -
