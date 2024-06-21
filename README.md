@@ -1,4 +1,6 @@
 # apkinstaller
+[![Решение проблем](https://img.shields.io/badge/Решение%20проблем-welcome-brightgreen.svg?style=flat)](https://github.com/Lime-blur/apkinstaller/issues)
+
 Приложение для установки apk файлов на Android устройство.
 
 ### Цель приложения
